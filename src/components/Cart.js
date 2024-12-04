@@ -1,9 +1,15 @@
 
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../features/cart/cartSlice';
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+
+    const handleClearCart = () => {
+        dispatch(clearCart());
+    };
 
     return (
         <div>
@@ -16,6 +22,8 @@ const Cart = () => {
                         <p key={index}>{item.name} - ${item.price}</p>
                     ))}
                     <h3>Total: ${cart.total}</h3>
+                    <button onClick={handleClearCart}>Clear Cart</button>
+
                 </div>
             )}
         </div>

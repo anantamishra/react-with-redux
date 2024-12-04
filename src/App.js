@@ -1,16 +1,22 @@
 // src/App.js
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Products from './components/Products';
-import Cart from './components/Cart';
+import CartPage from './pages/CartPage';
+import NavMenu from './components/NavMenu';
+import './App.css'
 
 function App() {
   return (
-    <div>
-      <h1>Simple React-Redux Store</h1>
-      <Products />
-      ----------------------------------------------------------------
-      <Cart />
-    </div>
+    <Router>
+      <NavMenu />
+      <div style={{ padding: '20px' }}>
+        <Routes>
+          <Route path="/" element={<Products />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
